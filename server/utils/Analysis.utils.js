@@ -35,9 +35,9 @@ const DebitCreditAnalysis = (data) => {
         // Debug transaction type
         // console.log(`Transaction: ${transaction.amount} - Type: ${transaction.type}`);
         
-        if (transaction.type === 'Debit') {
+        if (transaction.type === 'Debit' || transaction.type === 'debit') {
             expense += transaction.amount;
-        } else if (transaction.type === 'Credit') {
+        } else if (transaction.type === 'Credit'|| transaction.type === 'credit') {
             credited += transaction.amount;
         } else {
             unknownTypes++;
@@ -154,7 +154,7 @@ const MonthlyAnalysis = (data) => {
     console.log("Analyzing monthly breakdown...");
 
     data.forEach(element => {
-        if (element.type === 'Debit') {
+        if (element.type === 'Debit' ||element.type === 'debit') {
             // Check if date is valid
             if (!element.date) {
                 console.warn("Transaction with missing date:", element);

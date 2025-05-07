@@ -1,4 +1,4 @@
-//file.controller.js
+// Modified file.controller.js - Add debugging
 import { ApiResponse } from "../utils/ApiResponse.js";
 import fs from "fs";
 import { PDFExtract } from 'pdf.js-extract';
@@ -13,72 +13,71 @@ const UploadParse = async (req, res) => {
     console.log("File got successfully uploaded");
     
   if (req.file.mimetype=='application/pdf') {
-      try {
-          if (!req.file) {
-              return res.status(400).json({ 
-                  error: "No file uploaded" 
-              });
-          }
-          
-          console.log(req.file);
-          
-          // Check if file exists before reading
-          if (!fs.existsSync(req.file.path)) {
-              return res.status(404).json({ 
-                  error: `Uploaded file not found at ${req.file.path}` 
-              });
-          }
-          
-          try {
-              // Extract text from PDF
-              const extractedData = await pdfExtract.extract(req.file.path, extractionOptions);
-              
-              // Combine text from all pages
-              let fullText = '';
-              
-              if (extractedData && extractedData.pages) {
-                  extractedData.pages.forEach(page => {
-                      if (page.content) {
-                          page.content.forEach(item => {
-                              fullText += item.str + ' ';
-                          });
-                      }
-                  });
-              }
-              
-              // Create response
-              const response = new ApiResponse(200, "File upload was successful", {
-                  name: req.file.originalname,
-                  originalname: req.file.originalname,
-                  path: req.file.path,
-                  pageCount: extractedData.pages.length
-              });
+    try {
+        if (!req.file) {
+            return res.status(400).json({ 
+                error: "No file uploaded" 
+            });
+        }
+        
+        console.log(req.file);
+        
+        // Check if file exists before reading
+        if (!fs.existsSync(req.file.path)) {
+            return res.status(404).json({ 
+                error: `Uploaded file not found at ${req.file.path}` 
+            });
+        }
+        
+        try {
+            // Extract text from PDF
+            const extractedData = await pdfExtract.extract(req.file.path, extractionOptions);
+            
+            // Combine text from all pages
+            let fullText = '';
+            
+            if (extractedData && extractedData.pages) {
+                extractedData.pages.forEach(page => {
+                    if (page.content) {
+                        page.content.forEach(item => {
+                            fullText += item.str + ' ';
+                        });
+                    }
+                });
+            }
+            
+            // Create response
+            const response = new ApiResponse(200, "File upload was successful", {
+                name: req.file.originalname,
+                originalname: req.file.originalname,
+                path: req.file.path,
+                pageCount: extractedData.pages.length
+            });
 
-            const Data = StructuredPdfText(fullText.toLowerCase()) ;
+          const Data = StructuredPdfText(fullText.toLowerCase()) ;
 
-            res.Data = Data ;
+          res.Data = Data ;
 
-            const AnalysedData = TextAnalysis(Data) ;
-              res.json({ 
-                  response, 
-                  AnalysedData
-              });
-              
-          } catch (pdfError) {
-              console.error("PDF processing error:", pdfError);
-              return res.status(422).json({ 
-                  error: "Could not process the PDF file. Please ensure it's a valid PDF." 
-              });
-          }
-      } catch (error) {
-          console.error(`Error processing upload: ${error}`);
-          return res.status(500).json({ 
-              error: `Server error: ${error.message}` 
-          });
-      }
+          const AnalysedData = TextAnalysis(Data) ;
+            res.json({ 
+                response, 
+                AnalysedData
+            });
+            
+        } catch (pdfError) {
+            console.error("PDF processing error:", pdfError);
+            return res.status(422).json({ 
+                error: "Could not process the PDF file. Please ensure it's a valid PDF." 
+            });
+        }
+    } catch (error) {
+        console.error(`Error processing upload: ${error}`);
+        return res.status(500).json({ 
+            error: `Server error: ${error.message}` 
+        });
+    }
   } else {
     const records = [] ;
-    // const pass = new PassThrough() ;
     const parser = parse({columns : true})
     fs.createReadStream(req.file.path)
     .pipe(parser) 
@@ -88,30 +87,66 @@ const UploadParse = async (req, res) => {
         for (const key in row) {
             NormalisedRow[key.trim().toLowerCase()] = row[key] ;
         }
-      // Convert amount to number and sanitize
-    NormalisedRow.amount = parseFloat(NormalisedRow.amount) || 0;
-    NormalisedRow.type = NormalisedRow.type?.trim();
-    NormalisedRow.description = NormalisedRow.description?.trim() || "";
-    NormalisedRow.date = NormalisedRow.date?.trim() || "";
+        
+        // Convert amount to number and sanitize
+        NormalisedRow.amount = parseFloat(NormalisedRow.amount) || 0;
+        
+        // IMPORTANT: Ensure type is correctly formatted as 'Debit' or 'Credit'
+        // Check what values are actually coming in the data
+        const originalType = NormalisedRow.type?.trim() || "";
+        console.log("Original transaction type:", originalType);
+        
+        // Normalize type to match what the analysis expects
+        if (originalType.toLowerCase() === "debit" || 
+            originalType.toLowerCase() === "dr" || 
+            originalType.toLowerCase() === "withdrawal") {
+            NormalisedRow.type = "Debit";
+        } else if (originalType.toLowerCase() === "credit" || 
+                   originalType.toLowerCase() === "cr" || 
+                   originalType.toLowerCase() === "deposit") {
+            NormalisedRow.type = "Credit";
+        } else {
+            console.log("Unknown transaction type:", originalType);
+            NormalisedRow.type = "Unknown";
+        }
+        
+        NormalisedRow.description = NormalisedRow.description?.trim() || "";
+        NormalisedRow.date = NormalisedRow.date?.trim() || "";
 
-    records.push(NormalisedRow) ;
+        records.push(NormalisedRow);
     })
     .on('end',()=>{
+        // Debug the processed records
+        console.log("Total records processed:", records.length);
+        if (records.length > 0) {
+            console.log("Sample record:", records[0]);
+        }
+        
         const response = new ApiResponse(200,"Your CSV file is successfully parsed",{
             name: req.file.originalname,
             originalname: req.file.originalname,
             path: req.file.path,
-        })
+            recordCount: records.length
+        });
 
-        // finally sending the response
-    const AnalysedData = TextAnalysis(records) ;
+        // Add validation check
+        if (records.length === 0) {
+            console.warn("Warning: No records were parsed from the CSV!");
+        }
 
-        res.json({response,AnalysedData}) ;
+        // Finally sending the response
+        const AnalysedData = TextAnalysis(records);
+        console.log("Analysis results:", JSON.stringify(AnalysedData, null, 2));
+
+        res.json({response, AnalysedData});
     })
-    // pass.pipe(res)
-    // pass.pipe(parser) ;
-   
+    .on('error', (err) => {
+        console.error("CSV parsing error:", err);
+        res.status(422).json({ 
+            error: "Could not process the CSV file. Please ensure it's valid." 
+        });
+    });
   }
 }
 
-export {UploadParse} ;
+export {UploadParse};

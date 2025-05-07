@@ -1,0 +1,63 @@
+,Sample Bank Statement - SpendSense Test,,
+Date,Description,Type,Amount (INR)
+30-03-2025,Mobile Recharge,Debit,1262.53
+30-03-2025,Myntra,Debit,2657.06
+31-03-2025,YouTube Premium,Debit,111.54
+31-03-2025,Amazon,Debit,2576.84
+31-03-2025,Netflix,Debit,2011.52
+01-04-2025,Spotify,Debit,1759.94
+02-04-2025,Spotify,Debit,468.84
+02-04-2025,Pizza Hut,Debit,178.16
+03-04-2025,Amazon,Debit,1954.99
+04-04-2025,Refund,Credit,858.58
+05-04-2025,Ola,Debit,1096.26
+05-04-2025,Cashback,Credit,892.1
+05-04-2025,Swiggy Order,Debit,1114.77
+06-04-2025,Cashback,Credit,2863.83
+07-04-2025,Train Ticket,Debit,2468.71
+08-04-2025,Flight Booking,Debit,169.56
+08-04-2025,Amazon,Debit,1259.63
+08-04-2025,Zomato,Debit,1089.44
+09-04-2025,Salary,Credit,1862.05
+10-04-2025,Ola,Debit,1752.37
+10-04-2025,Amazon,Debit,1284.53
+10-04-2025,Flight Booking,Debit,820.91
+11-04-2025,Electricity Bill,Debit,624.88
+12-04-2025,Swiggy Order,Debit,2626.71
+12-04-2025,Water Bill,Debit,1611.12
+12-04-2025,Myntra,Debit,2270.78
+13-04-2025,Cashback,Credit,1609.76
+13-04-2025,Internet Bill,Debit,1188.59
+13-04-2025,Internet Bill,Debit,2644.4
+14-04-2025,Pizza Hut,Debit,748.11
+14-04-2025,Netflix,Debit,1727.8
+14-04-2025,Water Bill,Debit,1228.03
+15-04-2025,Amazon Prime,Debit,1271.65
+15-04-2025,Nykaa,Debit,512.15
+15-04-2025,Uber,Debit,2464.54
+16-04-2025,Flipkart,Debit,908.47
+16-04-2025,Internet Bill,Debit,2197.19
+17-04-2025,Amazon Prime,Debit,1370.39
+17-04-2025,Amazon,Debit,1114.77
+18-04-2025,Myntra,Debit,1119.19
+19-04-2025,Swiggy Order,Debit,892.46
+19-04-2025,Amazon,Debit,2704.97
+19-04-2025,Flight Booking,Debit,1915.87
+20-04-2025,Myntra,Debit,340.77
+20-04-2025,Amazon Prime,Debit,1999.37
+20-04-2025,Flight Booking,Debit,1506.07
+21-04-2025,Flipkart,Debit,2253.52
+22-04-2025,Pizza Hut,Debit,1083.05
+22-04-2025,Flipkart,Debit,1102.86
+22-04-2025,Domino's,Debit,1658.02
+23-04-2025,Refund,Credit,2244.49
+24-04-2025,Flipkart,Debit,1691.03
+25-04-2025,Amazon Prime,Debit,123.88
+25-04-2025,Uber,Debit,2464.49
+26-04-2025,Refund,Credit,2876.16
+26-04-2025,Uber,Debit,855.47
+26-04-2025,Uber,Debit,194.99
+27-04-2025,Amazon,Debit,741.68
+27-04-2025,Swiggy Order,Debit,1872.65
+28-04-2025,Spotify,Debit,2823.56
+28-04-2025,Netflix,Debit,883.28

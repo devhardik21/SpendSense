@@ -107,7 +107,7 @@ else {
                 NormalisedRow.amount = parseFloat(row[key].replace(/[^\d.-]/g, '')) || 0;
                 NormalisedRow.type = "Credit";
             }
-            else if (normalizedKey === "amount" || normalizedKey === "transaction amount") {
+            else if (normalizedKey === "amount" || normalizedKey === "transaction amount" || normalizedKey === "amount (inr)") {
                 NormalisedRow.amount = parseFloat(row[key].replace(/[^\d.-]/g, '')) || 0;
             }
             else if (normalizedKey.includes("desc") || normalizedKey.includes("narration") || normalizedKey.includes("particular")) {

@@ -74,7 +74,7 @@
   }
   
   .btn-primary:hover {
-    background-color: #ffcc70;
+    background-color: #f0cb6d;
   }
   
   .features {
@@ -176,3 +176,8 @@
     text-decoration: underline;
   }
   
+  #response {
+    border: 2px solid red;
+    height: 200px;
+    width: 500px;
+  }

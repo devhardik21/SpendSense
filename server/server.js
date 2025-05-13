@@ -13,7 +13,13 @@ const pdfExtract = new PDFExtract();
 const extractionOptions = {}; // default options
 
 // Middleware
-app.use(cors());
+// app.use(cors({
+//     origin: 'http://127.0.0.1:5500', // this must match your frontend exactly
+//     methods: ['GET', 'POST'],
+//     allowedHeaders: ['Content-Type'],
+//     credentials: false
+//   }));
+app.use(cors()) ;  
 app.use(express.json());
 
 // Root endpoint
@@ -22,7 +28,7 @@ app.get('/', (req, res) => {
 });
 
 // PDF upload and text extraction endpoint
-app.post('/api/upload', upload.single("myfile"),UploadParse);
+app.post('/api/upload', upload.single("statement"),UploadParse);
 
 // Start server
 const PORT = process.env.PORT || 3000; // Fallback port

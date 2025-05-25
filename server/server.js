@@ -5,6 +5,7 @@ import cors from "cors";
 import { upload } from "./middleware/multer.middleware.js";
 import { PDFExtract } from 'pdf.js-extract';
 import { UploadParse } from "./controller/files.controller.js";
+import { AiSummary } from "./controller/ai.controller.js";
 dotenv.config();
 
 // Initialize Express app and PDF extractor
@@ -26,9 +27,8 @@ app.use(express.json());
 app.get('/', (req, res) => {
    res.send(`Welcome to the backend of SpendSense`);
 });
-
-// PDF upload and text extraction endpoint
 app.post('/api/upload', upload.single("statement"),UploadParse);
+app.post('/api/get-summary',AiSummary) ;
 
 // Start server
 const PORT = process.env.PORT || 3000; // Fallback port

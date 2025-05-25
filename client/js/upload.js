@@ -1,11 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log(`Frontend-Backend handshake initiated!`);
-
     const FormUpload = document.getElementById('UploadForm');
     const RespDiv = document.getElementById('response');
     const FileUpload = document.getElementById('file');
     const BaseURI = 'http://localhost:8000'; // Make sure your backend runs here
-
+// this is hardik shandilya writing comments for this purticular file and this looks soo soo amazing
     FormUpload.addEventListener('submit', async (e) => {
         e.preventDefault(); // ✅ Prevent reload first
         console.log('debug point 2');

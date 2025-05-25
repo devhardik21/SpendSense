@@ -3,9 +3,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const FormUpload = document.getElementById("UploadForm");
   const RespDiv = document.getElementById("response");
   const FileUpload = document.getElementById("file");
-  const BaseURI = "http://localhost:8000"; // Make sure your backend runs here
+  const BaseURI = "https://spendsense-1-5wz2.onrender.com"; // Make sure your backend runs here
 
-  
+
   FormUpload.addEventListener("submit", async (e) => {
     e.preventDefault(); // ✅ Prevent reload first
     console.log("debug point 2");
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("Fetch successful:", data);
       console.log("debug point 10");
 
-      RespDiv.innerHTML = `<p style="color:green;">✅ Upload successful: ${data.message}</p>`;
+      RespDiv.innerHTML = `<p style="color:green;"> Upload successful: ${data.message}</p>`;
     } catch (error) {
       console.error("Error connecting to backend:", error);
       RespDiv.innerHTML = `<p style="color:red;">⚠️ Error connecting to backend: ${error.message}</p>`;

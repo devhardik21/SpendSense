@@ -60,7 +60,22 @@ const UploadParse = async (req, res) => {
 
                 const AnalysedData = TextAnalysis(Data);
 
-                const FinalResponse = new ApiResponse(201, "The file has been sent and analysed successfully", { content : AnalysedData })
+                  const GraphAnalyedData = {
+                    MoneyBreakdown: {
+                      label: Object.keys(AnalysedData.MoneyRecord),
+                      values: Object.values(AnalysedData.MoneyRecord),
+                    },
+                    TransactionType: {
+                      label: Object.keys(AnalysedData.TransactionType),
+                      values: Object.values(AnalysedData.TransactionType),
+                    },
+                    MonthlyBreakdown: {
+                      label: Object.keys(AnalysedData.MonthlyBreakdown),
+                      values: Object.values(AnalysedData.MonthlyBreakdown),
+                    },
+                  };
+
+                const FinalResponse = new ApiResponse(201, "The file has been sent and analysed successfully",  GraphAnalyedData) ;
 
                 res.json(FinalResponse);
             } catch (pdfError) {
@@ -197,7 +212,22 @@ const UploadParse = async (req, res) => {
                 const AnalysedData = TextAnalysis(records);
                 console.log("Analysis results:", JSON.stringify(AnalysedData, null, 2));
 
-                const FinalResponse = new ApiResponse(201, "The file has been sent and analysed successfully", {content :AnalysedData })
+                const GraphAnalyedData = {
+                  MoneyBreakdown: {
+                    label: Object.keys(AnalysedData.MoneyRecord),
+                    values: Object.values(AnalysedData.MoneyRecord),
+                  },
+                  TransactionType: {
+                    label: Object.keys(AnalysedData.TransactionType),
+                    values: Object.values(AnalysedData.TransactionType),
+                  },
+                  MonthlyBreakdown: {
+                    label: Object.keys(AnalysedData.MonthlyBreakdown),
+                    values: Object.values(AnalysedData.MonthlyBreakdown),
+                  },
+                };
+
+                const FinalResponse = new ApiResponse(201, "The file has been sent and analysed successfully", GraphAnalyedData)
 
                 res.json(FinalResponse);
             })

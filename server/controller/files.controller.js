@@ -4,7 +4,7 @@ import fs from "fs";
 import { PDFExtract } from 'pdf.js-extract';
 import { parse } from "csv-parse";
 import { StructuredPdfText } from "../utils/StrText.utils.js";
-import { TextAnalysis } from "../utils/analysis.utils.js";
+import { TextAnalysis } from "../utils/Analysis.utils.js";
 
 const pdfExtract = new PDFExtract();
 const extractionOptions = {};

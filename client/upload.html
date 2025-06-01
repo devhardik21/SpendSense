@@ -1,28 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Upload Statement - SpendSense</title>
-  <link rel="stylesheet" href="./css/index.css" />
-</head>
-<body>
-  <div class="upload-page">
-    <h1>Upload Your Bank Statement</h1>
-    <p>We support PDF and CSV files.</p>
-    
-    <form class="upload-form" id="UploadForm" enctype="multipart/form-data">
-      <label for="file">Choose your file:</label>
-      <input type="file" id="file" name="statement" accept=".pdf,.csv,.txt" />
-      <button type="submit" class="btn-primary">Analyze Now</button>
-    </form>
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upload Statement - SpendSense</title>
+    <link rel="stylesheet" href="./css/index.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="upload-page">
+      <h1>Upload Your Bank Statement</h1>
+      <p>We support PDF and CSV files.</p>
 
-  
+      <form class="upload-form" id="UploadForm" enctype="multipart/form-data">
+        <label for="file">Choose your file:</label>
+        <input type="file" id="file" name="statement" accept=".pdf,.csv,.txt" />
+        <button type="submit" class="btn-primary">Analyze Now</button>
+      </form>
+      <div class="response" id="response"></div>
+    </div>
+    <div class="Graphs">
+      <div class="divcanvas">
+        <canvas id="ExpCredit" width="400" height="400"></canvas>
+      </div>
+      <div class="divcanvas">
+        <canvas id="CatExp" width="400" height="400"></canvas>
+      </div>
+      <div class="divcanvas">
+        <canvas id="MonthExp" width="400" height="400"></canvas>
+      </div>
+    </div>
+    <div class="ai-generated-summary"></div>
 
-    <a href="index.html" class="go-back">← Back to Home</a>
-  </div>
-
-  <script src="./js/upload.js"></script>
-</body>
+    <div class="btn-div">
+      <button class="button" onclick="window.location.href='index.html';">
+        Back to Home
+      </button>
+      <button class="button" id="ai-btn">Get AI Insights</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./js/upload.js"></script>
+  </body>
 </html>

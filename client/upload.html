@@ -1,3 +1,4 @@
+<!-- upload.html -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -24,12 +25,15 @@
     </div>
     <div class="Graphs">
       <div class="divcanvas">
+        <h3 class="graph-title">Expense vs Credit</h3>
         <canvas id="ExpCredit" width="400" height="400"></canvas>
       </div>
       <div class="divcanvas">
+        <h3 class="graph-title">Category Expenses</h3>
         <canvas id="CatExp" width="400" height="400"></canvas>
       </div>
       <div class="divcanvas">
+        <h3 class="graph-title">Monthly Expenses</h3>
         <canvas id="MonthExp" width="400" height="400"></canvas>
       </div>
     </div>
@@ -41,7 +45,9 @@
       </button>
       <button class="button" id="ai-btn">Get AI Insights</button>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js"></script>
     <script src="./js/upload.js"></script>
   </body>
 </html>

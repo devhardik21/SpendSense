@@ -1,3 +1,4 @@
+// upload.js
 document.addEventListener("DOMContentLoaded", () => {
   console.log(`Frontend-Backend handshake initiated!`);
   const FormUpload = document.getElementById("UploadForm");
@@ -7,7 +8,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const ExpCreditArea = document.getElementById("ExpCredit");
   const CatExpArea = document.getElementById("CatExp");
   const MonthExpArea = document.getElementById("MonthExp");
+  const GetInsightsBtn = document.getElementById("ai-btn");
+  const AiSummarydiv = document.querySelector(".ai-generated-summary");
 
+  let FinancialData;
   const bgColors = ["#1F2937", "#F59E0B"]; // Gunmetal + Amber
   const beautifulColors = [
     "rgba(52, 58, 64, 0.9)", // dark gray
@@ -71,11 +75,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
       console.log("Fetch successful:", data);
 
+      // Remove this line as it's incomplete and causing the error:
+      // UserFinancialData = data.
+
+      // Store the financial data properly:
+      FinancialData = data.data;
+
+      // Show the graphs section
+      document.querySelector(".Graphs").style.display = "flex";
+
       RespDiv.innerHTML = `
       <p style="
       color:green;
       margin:25px;
-      ">Upload Successful.Here is your summary
+      ">Upload Successful. Here is your summary
       </p>`;
 
       const ExpCreditGraph = new Chart(ExpCreditArea, {
@@ -195,6 +208,32 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch (error) {
       console.error("Error connecting to backend:", error);
       RespDiv.innerHTML = `<p style="color:red;">⚠️ Error connecting to backend: ${error.message}</p>`;
+    }
+  });
+
+  GetInsightsBtn.addEventListener("click", async (e) => {
+    e.preventDefault();
+    AiSummarydiv.innerHTML = `<p>Loading....</p>`;
+    try {
+      const response = await fetch(`${BaseURI}/api/get-summary`, {
+        method: "POST",
+        headers : {
+        'Content-type':"application/json"
+      },
+        body : JSON.stringify({FinancialData})
+      });
+
+      const data = await response.json() ;
+      // console.log(data);
+      
+      const converter = new showdown.Converter()
+      const displaySummary = converter.makeHtml(data.data)
+      AiSummarydiv.style.display='block';
+      AiSummarydiv.innerHTML = `${displaySummary}`;
+      
+    } catch (error) {
+      console.log("Catch block", error.message);
+      alert(error.message);
     }
   });
 });

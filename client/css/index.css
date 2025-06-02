@@ -134,7 +134,10 @@ body {
 
 .upload-page {
   max-width: 600px;
-  margin: 80px auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 80px ;
+  margin-bottom: 40px;
   background: white;
   padding: 2rem;
   border-radius: 10px;
@@ -173,29 +176,41 @@ input[type="file"] {
   } */
 
 .Graphs {
-  display: flex;
-  /* border: 2px solid ; */
-  /* gap: 2rem;
+  display: none;
+  flex-wrap: nowrap; /* Changed from wrap to nowrap */
   justify-content: center;
-  align-items: stretch;
-  margin-bottom: 2rem; */
+   gap: 1.9rem;   /*Reduced gap for better horizontal fit */
+  padding: 1rem;
+  max-width: 100%;
+  overflow-x: auto; /* Allow horizontal scroll if needed */
 }
 
 .divcanvas {
-  width: 400px;
-  height: 400px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 450px; /* Reduced from 500px for better horizontal fit */
+  height: 450px; /* Adjusted height to accommodate legend */
+  background: white;
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex-shrink: 0; /* Prevent cards from shrinking */
 }
 
 .divcanvas canvas {
   width: 100%;
-  height: 100%;
-  max-width: 400px;
-  max-height: 400px;
+  height: calc(100% - 70px); /* Adjust height to leave space for legend */
+  max-width: 100%;
+  max-height: 100%;
   display: block;
+}
+
+/* Graph title styling */
+.graph-title {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #1e3c72;
 }
 
 .button {
@@ -228,4 +243,16 @@ input[type="file"] {
 
 #ai-btn {
   display: none;
+}
+
+.ai-generated-summary{
+display: none;
+height: max-content;
+width: 1350px;
+background-color: white;
+border-radius: 25px;
+margin-top: 10px;
+margin-right: 70px;
+margin-left: 70px;
+padding: 10px 75px;
 }

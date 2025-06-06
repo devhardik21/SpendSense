@@ -33,7 +33,7 @@ const AiSummary = async (req, res) => {
     - Make sure the suggestions are **relevant** to the categories and patterns seen in the data.
     - Avoid generic advice — personalize the suggestions based on real values.
     
-    All values are in ₹ (Indian Rupees).Dont include any other symbol than ruppee. Here is the user's financial data:
+    All values are in ₹ (Indian Rupees).Dont include any other symbol than ruppee.Use bullet points only. Here is the user's financial data:
     
     ${JSON.stringify(FinancialData, null, 2)}
     `;

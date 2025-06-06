@@ -12,15 +12,32 @@ const AiSummary = async (req, res) => {
     const prompt = `
     You are a financial analyst AI assistant.
     
-    Given the user's financial data (monthly breakdown, money in/out, and categorized expenses), do the following:
-    1. Summarize the user's spending behavior in simple terms.
-    2. Highlight which categories they spend the most on.
-    3. Suggest 2/3 areas where the user can reduce or optimize their expenses.
-    4. Comment on whether their credited income is sufficient.
+    The user's financial data is in Indian Rupees (₹) and includes:
+    - Total money spent and credited
+    - Categorized breakdown of expenses
+    - Monthly expense history
     
-    Here is the user's data:
+    Your task is to analyze this data and return a report in two **clear sections**:
+    
+    ---
+    
+    **1. Summary (2-3 lines):**{Keep it 2/3 lines only}
+    - Briefly describe the user's overall spending behavior.
+    - Highlight the top 2/3 categories where they spend the most.
+    - Comment on whether their credited income is sufficient to cover their expenses.
+    
+    ---
+    
+    **Spending Optimization Tips:**
+    - Suggest 2/3 specific and practical ways to reduce or optimize spending.
+    - Make sure the suggestions are **relevant** to the categories and patterns seen in the data.
+    - Avoid generic advice — personalize the suggestions based on real values.
+    
+    All values are in ₹ (Indian Rupees).Dont include any other symbol than ruppee. Here is the user's financial data:
+    
     ${JSON.stringify(FinancialData, null, 2)}
     `;
+    
     
     if (!YOUR_API_KEY) {
       const response = new ApiResponse(400, "No api key found", []);

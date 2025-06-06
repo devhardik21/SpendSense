@@ -28,7 +28,7 @@ const AiSummary = async (req, res) => {
     
     ---
     
-    **Spending Optimization Tips:**{make it in depth}
+    **Spending Optimization Tips:**{give the user 5/6 points}
     - Suggest in-depth and practical ways to reduce or optimize spending.
     - Make sure the suggestions are **relevant** to the categories and patterns seen in the data.
     - Avoid generic advice — personalize the suggestions based on real values.

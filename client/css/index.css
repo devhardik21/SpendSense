@@ -186,21 +186,22 @@ input[type="file"] {
 }
 
 .divcanvas {
-  width: 450px; /* Reduced from 500px for better horizontal fit */
-  height: 450px; /* Adjusted height to accommodate legend */
+  width: 450px;
+  height: 450px; /* Increased height to accommodate bottom legend */
   background: white;
   border-radius: 15px;
   padding: 1.5rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  flex-shrink: 0; /* Prevent cards from shrinking */
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .divcanvas canvas {
-  width: 100%;
-  height: calc(100% - 70px); /* Adjust height to leave space for legend */
+  width: 100% !important;
+  height: calc(100% - 40px) !important; /* Reduced height to make room for bottom legend */
   max-width: 100%;
-  max-height: 100%;
   display: block;
 }
 
@@ -213,26 +214,19 @@ input[type="file"] {
   color: #1e3c72;
 }
 
+
 .button {
   display: inline-flex;
-  border-radius: 50px;
-  background-color: rgb(34, 33, 33);
-  color: white;
-  padding: 12px;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-}
-.button {
-  display: inline-flex;
+  border: 2px solid white;
   border-radius: 21px;
-  background-color: rgb(34, 33, 33);
-  color: white;
-  padding: 17px;
+  color: rgb(34, 33, 33);
+  background-color: white;
+  padding: 12px;
   margin-left: 30px;
   margin-right: 30px;
   align-items: center;
   justify-content: center;
+  font-weight: bold;
 }
 
 .btn-div {
@@ -242,17 +236,218 @@ input[type="file"] {
 }
 
 #ai-btn {
+    display: inline-flex;
+    border: 2px solid white;
+    border-radius: 30px;
+    background-color: #2a5298;  
+     color: ghostwhite;
+    padding: 22px;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 30px;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
   display: none;
 }
 
 .ai-generated-summary{
 display: none;
 height: max-content;
-width: 1350px;
+
 background-color: white;
 border-radius: 25px;
 margin-top: 10px;
 margin-right: 70px;
 margin-left: 70px;
 padding: 10px 75px;
+}
+
+.hero_upload{
+  background: linear-gradient(to right, #1e3c72, #2a5298);
+  color: white;
+  padding: 20px; /* Reduced from 60px to 20px */
+  text-align: center;
+}
+.navbar_upload{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto; 
+}
+
+.upload-btn-primary {
+  display: inline-block;
+  background-color: #2a5298;  /* Changed from #140e0e to match the site's theme */
+  color: ghostwhite;
+  padding: 0.8rem 1.5rem;
+  border-radius: 21px;
+  font-weight: bolder;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+/* Add hover effect for better interaction */
+.upload-btn-primary:hover {
+  background-color: #1e3c72;
+  transition: background-color 0.3s ease;
+}
+
+/* Add these media queries at the end of index.css */
+
+@media screen and (max-width: 768px) {
+  /* Navigation */
+  .navbar, .navbar_upload {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Hero Section */
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  /* Upload Page */
+  .upload-page {
+    margin: 20px;
+    padding: 1rem;
+  }
+
+  /* Graphs Section */
+  .Graphs {
+    flex-direction: column;
+    padding: 0.5rem;
+  }
+
+  .divcanvas {
+    width: 100%;
+    height: 400px;
+    margin: 10px 0;
+  }
+
+  /* AI Summary Section */
+  .ai-generated-summary {
+    width: 90%;
+    margin: 10px auto;
+    padding: 15px;
+  }
+
+  /* Buttons */
+  .button {
+    margin: 10px;
+    width: 80%;
+  }
+
+  .btn-div {
+    margin: 15px 0;
+  }
+
+  .upload-btn-primary {
+    width: 100%;
+  }
+}
+
+/* For extra small devices */
+@media screen and (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .upload-page h1 {
+    font-size: 1.5rem;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .feature {
+    margin: 10px;
+  }
+}
+
+/* Fix for chart responsiveness */
+.divcanvas canvas {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+/* Update the AI summary styles to use neutral theme colors */
+.ai-generated-summary {
+  line-height: 1.8;
+}
+
+.ai-generated-summary h1 {
+  color: #1e3c72;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #2a5298;
+  padding-bottom: 0.5rem;
+}
+
+.ai-generated-summary h2 {
+  color: #2a5298;
+  font-size: 1.5rem;
+  margin: 1.5rem 0 1rem 0;
+}
+
+.ai-generated-summary h3 {
+  color: #3b4d71;
+  font-size: 1.2rem;
+  margin: 1.2rem 0 0.8rem 0;
+}
+
+.ai-generated-summary p {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.ai-generated-summary ul, 
+.ai-generated-summary ol {
+  margin: 1rem 0;
+  padding-left: 2rem;
+}
+
+.ai-generated-summary li {
+  margin-bottom: 0.5rem;
+  color: #444;
+}
+
+.ai-generated-summary strong {
+  color: #1e3c72;
+  font-weight: 600;
+}
+
+.ai-generated-summary em {
+  color: #2a5298;
+  font-style: italic;
+}
+
+/* Single highlight color for important information */
+.ai-generated-summary .highlight-info {
+  color: #2a5298;
+  font-weight: 500;
+}
+
+/* Keep the code block styling */
+.ai-generated-summary pre,
+.ai-generated-summary code {
+  background-color: #f3f4f6;
+  border-radius: 4px;
+  padding: 0.2rem 0.4rem;
+  font-family: monospace;
 }

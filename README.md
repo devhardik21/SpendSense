@@ -1,26 +1,26 @@
 SpendSense — Smart Expense Tracker with AI-Powered Insights
-SpendSense is an intelligent personal finance tracker that helps you make sense of your spending. Upload your bank statements (PDF/CSV) and get clean, structured data along with AI-generated summaries, spending breakdowns, and subscription tracking.
+SpendSense is an intelligent personal finance tracker that transforms raw bank statements into clear, actionable insights. Upload your PDF or CSV statements, and SpendSense automatically parses the data, categorizes your expenses, detects subscriptions, and generates smart financial summaries — all powered by Mistral models via OpenRouter.
 
-Powered by Mistral models via OpenRouter, SpendSense provides fast and insightful financial analysis — no manual effort required.
+🔍 Key Features
+ Multi-format Upload: Supports both PDF and CSV statements
 
- Key Features
-Bank Statement Upload: Supports PDF and CSV formats
+ AI-Powered Insights: Summarizes your financial behavior using Mistral LLMs
 
-Automatic Parsing: Extracts date, amount, description, and type
+ Smart Parsing: Uses pdf.js-extract and csv-parse to extract structured data
 
-AI-Powered Insights: Summarized financial behavior using Mistral LLMs
+ Transaction Categorization: Food, Rent, Transport, Shopping, and more
 
- Expense Categorization: Food, Rent, Travel, Subscriptions, etc.
+ Subscription Tracking: Automatically detects recurring charges
 
- Subscription Detection: Identify and track recurring expenses
+ Interactive Dashboards: Visualize your expenses with charts and graphs
 
- Visual Dashboards: Easy-to-understand graphs and summaries
+🧰 Tech Stack
+Frontend: HTML,CSS,JS,Chart.js
 
- Tech Stack
-Frontend: HTML,CSS,JS, Chart.js
-
-Backend: Node.js, Express.js, Multer,pdf.js-extract,csv-parse
+Backend: Node.js, Express.js, Multer
 
 Database: MongoDB
+
+Parsing Tools: pdf.js-extract, csv-parse
 
 AI Engine: Mistral via OpenRouter API

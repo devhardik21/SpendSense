@@ -29,7 +29,7 @@ const AiSummary = async (req, res) => {
     ---
     
     **Spending Optimization Tips:**
-    - Suggest 2/3 specific and practical ways to reduce or optimize spending.
+    - Suggest in-depth and practical ways to reduce or optimize spending.
     - Make sure the suggestions are **relevant** to the categories and patterns seen in the data.
     - Avoid generic advice — personalize the suggestions based on real values.
     

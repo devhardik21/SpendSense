@@ -1,26 +1,48 @@
-SpendSense — Smart Expense Tracker with AI-Powered Insights
-SpendSense is an intelligent personal finance tracker that transforms raw bank statements into clear, actionable insights. Upload your PDF or CSV statements, and SpendSense automatically parses the data, categorizes your expenses, detects subscriptions, and generates smart financial summaries — all powered by Mistral models via OpenRouter.
+# 💸 SpendSense — Smart Expense Tracker with AI-Powered Insights
 
-🔍 Key Features
- Multi-format Upload: Supports both PDF and CSV statements
+**SpendSense** is an intelligent personal finance tool that transforms your bank statements into clear, actionable insights. Just upload a **PDF or CSV**, and SpendSense will:
 
- AI-Powered Insights: Summarizes your financial behavior using Mistral LLMs
+-  **Parse your data**
+-  **Categorize transactions**
+-  **Detect subscriptions**
+-  **Generate AI-powered summaries**
 
- Smart Parsing: Uses pdf.js-extract and csv-parse to extract structured data
+All powered by **Mistral LLMs via OpenRouter**, and built for both clarity and simplicity.
 
- Transaction Categorization: Food, Rent, Transport, Shopping, and more
+---
 
- Subscription Tracking: Automatically detects recurring charges
+##  Features
 
- Interactive Dashboards: Visualize your expenses with charts and graphs
+-  **Multi-format Support:** Upload your **bank statements** in PDF or CSV format  
+-  **Accurate Parsing:**  
+  - **PDFs parsed with** `pdf.js-extract`  
+  - **CSVs handled by** `csv-parse`  
+-  **AI Insights:**  
+  Summarized spending behavior using **Mistral** models via **OpenRouter API**  
+-  **Category-wise Expense Breakdown:**  
+  Food, Transport, Rent, Shopping, Subscriptions, etc.  
+-  **Subscription Detection:** Automatically flags recurring charges  
+-  **Interactive Visuals:** Clean dashboard with graphs using **Chart.js**
 
-🧰 Tech Stack
-Frontend: HTML,CSS,JS,Chart.js
+---
 
-Backend: Node.js, Express.js, Multer
+##  Tech Stack
 
-Database: MongoDB
+**Frontend:**  
+- HTML,CSS,JS 
+- Chart.js  
 
-Parsing Tools: pdf.js-extract, csv-parse
+**Backend:**  
+- Node.js  
+- Express.js  
+- Multer  
+- pdf.js-extract  
+- csv-parse 
 
-AI Engine: Mistral via OpenRouter API
+**Database:**  
+- MongoDB  
+
+**AI Layer:**  
+- Mistral LLMs via OpenRouter
+
+---

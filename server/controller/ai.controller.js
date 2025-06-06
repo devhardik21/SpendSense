@@ -17,7 +17,7 @@ const AiSummary = async (req, res) => {
     - Categorized breakdown of expenses
     - Monthly expense history
     
-    Your task is to analyze this data and return a report in two **clear sections**:
+    Your task is to analyze this data and first give a heading Your Report and then return a report in two **clear sections**:
     
     ---
     
@@ -28,7 +28,7 @@ const AiSummary = async (req, res) => {
     
     ---
     
-    **Spending Optimization Tips:**
+    **Spending Optimization Tips:**{make it in depth}
     - Suggest in-depth and practical ways to reduce or optimize spending.
     - Make sure the suggestions are **relevant** to the categories and patterns seen in the data.
     - Avoid generic advice — personalize the suggestions based on real values.

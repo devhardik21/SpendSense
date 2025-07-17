@@ -53,7 +53,7 @@ const AiSummary = async (req, res) => {
           "Content-type": "application/json",
         },
         body: JSON.stringify({
-          model: "mistralai/devstral-small:free",
+          model: "mistralai/mistral-7b-instruct",
           messages: [
             {
               role: "user",
@@ -69,7 +69,15 @@ const AiSummary = async (req, res) => {
       const analyis = data.choices[0]?.message.content;
       const resp = new ApiResponse(200, "Response was successfull", analyis);
       return res.json(resp);
+    } else {
+      const errorBody = await response.text(); // helpful for debugging
+      return res
+        .status(response.status)
+        .json(
+          new ApiResponse(response.status, `API call failed: ${errorBody}`, [])
+        );
     }
+    
   } catch (error) {
     console.log(`we got an error fetching the api ${error.message}`);
     return res.status(500).json({
